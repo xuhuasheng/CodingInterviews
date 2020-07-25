@@ -35,10 +35,11 @@ def buildLinkedNode(arr):
     node = Node(arr[len(arr)-1])
     node.next = None
     head = node
-    for i in range(len(arr)-2, -1, -1):
-        node = Node(arr[i])
-        node.next = head
-        head = node
+    if len(arr) >= 2:
+        for i in range(len(arr)-2, -1, -1):
+            node = Node(arr[i])
+            node.next = head
+            head = node
     return head
 
 def outputLinkedNode(head):
