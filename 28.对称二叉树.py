@@ -20,7 +20,8 @@ def isSymmetrical(root):
         # 且左右子节点相等
         if root.leftChild.data == root.rightChild.data:
             # 进一步判断左右子树是否镜像
-            return isMirrorTree(root.leftChild, root.rightChild)
+            # return isMirrorTree(root.leftChild, root.rightChild)
+            return isSame(root.leftChild, root.rightChild)
         else:
             return False
     return False
@@ -29,25 +30,33 @@ def isSymmetrical(root):
 def isMirrorTree(root1, root2):
     if root1 is None and root2 is None:
         return True
-    elif root1 is not None and root2 is not None:
+    elif root1 and root2:
         if root1.data == root2.data:
             # 镜像的四种可能情况
-            if root1.leftChild is not None and root2.rightChild is not None and root1.rightChild is None and root2.leftChild is None:
+            if root1.leftChild and root2.rightChild and not root1.rightChild and not root2.leftChild:
                 if root1.leftChild.data == root2.rightChild.data and isMirrorTree(root1.leftChild, root2.rightChild):
                     return True
-            elif root1.leftChild is None and root2.rightChild is None and root1.rightChild is not None and root2.leftChild is not None:
+            elif not root1.leftChild and not root2.rightChild and root1.rightChild and root2.leftChild:
                 if root1.rightChild.data == root2.leftChild.data and isMirrorTree(root1.rightChild, root2.leftChild):
                     return True
-            elif root1.leftChild is not None and root2.rightChild is not None and root1.rightChild is not None and root2.leftChild is not None:
+            elif root1.leftChild and root2.rightChild and root1.rightChild and root2.leftChild:
                 if root1.leftChild.data == root2.rightChild.data and isMirrorTree(root1.leftChild, root2.rightChild):
                     if root1.rightChild.data == root2.leftChild.data and isMirrorTree(root1.rightChild, root2.leftChild):
                         return True
-            elif root1.leftChild is None and root2.rightChild is None and root1.rightChild is None and root2.leftChild is None:
+            elif not root1.leftChild and not root2.rightChild and not root1.rightChild and not root2.leftChild :
                 return True
             else:
                 return False
         else:
             return False
+    else:
+        return False
+
+def isSame(root1, root2):
+    if not root1 and not root1:
+        return True
+    if root1 and root2 and root1.data == root2.data:
+        return isSame(root1.leftChild, root2.rightChild) and isSame(root1.rightChild, root2.leftChild)
     else:
         return False
 

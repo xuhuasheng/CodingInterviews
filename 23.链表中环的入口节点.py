@@ -9,7 +9,9 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
-        
+
+# 时间复杂度：o(n)
+# 时间复杂度：o(1)
 def entryNode(head):
     if head is None:
         return None
@@ -35,4 +37,18 @@ def entryNode(head):
             if p1 == p2:
                 entryNode = p1
     return entryNode
+
+# 时间复杂度：o(n)
+# 空间复杂度：o(n)
+def EntryNodeOfLoop(self, pHead):
+        # write code here
+        #遍历链表，环的存在，遍历遇见的第一个重复的即为入口节点
+        tempList = []
+        p = pHead
+        while p:
+            if p in tempList:
+                return p
+            else:
+                tempList.append(p)
+            p = p.next
     
