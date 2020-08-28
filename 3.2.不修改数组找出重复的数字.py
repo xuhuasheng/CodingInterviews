@@ -13,11 +13,13 @@ def getDuplicateNum1(arr):
             arr2[i] = i
 
 # 分治
+# 时间复杂度o(nlogn)
+# 空间复杂度o(1)
 def getDuplicateNum2(arr):
     start = 1
     end = len(arr) - 1
     while end >= start:
-        mid = (end-start)/2+start
+        mid = (end-start)//2+start
         count = countRange(arr, start, mid)
         if end == start:
             if count > 1:

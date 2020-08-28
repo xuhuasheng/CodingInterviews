@@ -5,6 +5,14 @@ class TreeNode:
         self.left = None
         self.right = None
 
+# 给定前序遍历序列和中序遍历序列
+# 输出该二叉树的叶节点个数
+# 输入
+# 3
+# 1 2 3
+# 2 1 3
+# 输出
+# 2
 
 def reconstructTree(preOrder, inOrder):
     if len(preOrder) == 0 or len(inOrder) == 0:
@@ -28,6 +36,7 @@ def reconstructTree(preOrder, inOrder):
         node.right = reconstructTree(preOrder[leftNum+1 :], inOrder[midIdx+1 :])
     return node
 
+# 计算树的叶节点个数
 def numOfLeaf(root):
     if root is None:
         return 0

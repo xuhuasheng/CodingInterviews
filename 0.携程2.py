@@ -3,7 +3,7 @@ import sys
 
 # 完全背包问题：动态规划
 # f(0) = 0
-# f(n) = min(1 + f(n-i)) if i <= n
+# f(n) = min(1+f(n-i)) if i <= n
 def trip(arr, n):
     # dp数组初始化为“无穷大”=》n+1
     dp = [n+1] * (n+1)
@@ -12,12 +12,11 @@ def trip(arr, n):
     # 从f(0)递推到f(n)
     for i in range(1, n+1):
         # 遍历每个硬币
-        for j in arr:
+        for coin in arr:
             # 如果可装
-            if i >= j:
-                # 比较f(n)上一次的值 和 装入之后构成的子问题f(n-i)的值+1，取两者最小
-                # 得到当前子问题的最优值
-                dp[i] = min(dp[i], 1+dp[i-j])
+            if i >= coin:
+                # 遍历coin 求 dp[i-coin]的最小值
+                dp[i] = min(dp[i], 1+dp[i-coin])
     # 如果未更新dp的初始化，则说明无解
     if dp[n] == n + 1:
         return -1

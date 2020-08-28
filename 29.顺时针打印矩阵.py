@@ -75,6 +75,24 @@ def printCircle(mat, cols,rows,start):
         for i in range(endy-1, start, -1):
             print(mat[i,start],end=",")
 
+class Solution:
+    # matrix类型为二维列表，需要返回列表
+    #知识点：完成信息的索引与去除，按照顺时针，每打印一圈的同时删除一圈，再进入下一层循环
+    def printMatrix(self, matrix):
+        # write code here
+        list = []
+        while matrix:
+            list += (matrix.pop(0))
+            if matrix and matrix[0]:
+                for row in matrix:
+                    list.append(row.pop())
+            if matrix and matrix[0]:
+                list += matrix.pop()[::-1]
+            if matrix and matrix[0]:
+                for row in matrix[::-1]:
+                    list.append(row.pop(0))
+        return list
+
 if __name__ == "__main__":
     arr = [[1,2,3,4],
            [5,6,7,8],
