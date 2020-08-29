@@ -22,7 +22,7 @@ def getLeastKNums(arr, k):
 def partition(arr, start, end):
     pivot = arr[start]
     mark = start
-    for i in range(start+1, end):
+    for i in range(start+1, end+1):
         if arr[i] < pivot:
             mark += 1
             arr[i], arr[mark] = arr[mark], arr[i]
