@@ -26,38 +26,38 @@ def deal(arr):
             d[bisect.bisect_left(d, val)] = val
             count.append(count[-1])
     return count
-// 二分查找变体 找到第一个大于n的位置index 
-int BinarySearch(int *dp, int len, int n){
-	int left = 1;
-	int right = len;
-	while(left < right){
-		int mid = (left+right)/2;
-		if(dp[mid] > n){
-			right = mid;
-		}
-		else{
-			left = mid+1;
-		}
-	}
-	return right;
-}
+# // 二分查找变体 找到第一个大于n的位置index 
+# int BinarySearch(int *dp, int len, int n){
+# 	int left = 1;
+# 	int right = len;
+# 	while(left < right){
+# 		int mid = (left+right)/2;
+# 		if(dp[mid] > n){
+# 			right = mid;
+# 		}
+# 		else{
+# 			left = mid+1;
+# 		}
+# 	}
+# 	return right;
+# }
 
-// 优化的dp dp数组的最终下标为答案 
-int getResult1(int n){
-	 dp[1] = arr[0];
-	 int index = 1;
-	 for(int i = 1; i < n; i++){
-	 	if(arr[i] > dp[index]){
-	 		// 更新index 
-	 		dp[++index] = arr[i];
-		 }
-		 else{
-		 	// 把dp数组中第一个大于n的数字替换为arr[i] 
-		 	int tempIndex = BinarySearch(dp, index, arr[i]);
-		 	dp[tempIndex] = arr[i];
-		 }
-	 }
-	 return index;
+# // 优化的dp dp数组的最终下标为答案 
+# int getResult1(int n){
+# 	 dp[1] = arr[0];
+# 	 int index = 1;
+# 	 for(int i = 1; i < n; i++){
+# 	 	if(arr[i] > dp[index]){
+# 	 		// 更新index 
+# 	 		dp[++index] = arr[i];
+# 		 }
+# 		 else{
+# 		 	// 把dp数组中第一个大于n的数字替换为arr[i] 
+# 		 	int tempIndex = BinarySearch(dp, index, arr[i]);
+# 		 	dp[tempIndex] = arr[i];
+# 		 }
+# 	 }
+# 	 return index;
 
 if __name__ == "__main__":
     # # 打开输入文件
