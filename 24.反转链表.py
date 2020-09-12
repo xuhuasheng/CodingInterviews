@@ -25,6 +25,19 @@ def reverseListedNode(head):
         head = nextNode
     return head
 
+# 递归
+def reverseList(self, head: ListNode) -> ListNode:
+    if head is None: 
+        return None
+    node = head 
+    nextnode = node.next
+    if nextnode is None: 
+        return node
+    newhead = self.reverseList(nextnode)
+    nextnode.next = node 
+    node.next = None
+    return newhead
+
 def buildListedNode(arr):
     if len(arr) == 0:
         return None

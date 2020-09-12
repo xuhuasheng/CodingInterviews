@@ -4,9 +4,9 @@
 
 class TreeNode:
     def __init__(self, data):
-        self.data = data
-        self.leftChild = None
-        self.rightChild = None
+        self.val = data
+        self.left = None
+        self.right = None
 
 # 递归法
 def isSymmetrical(root):
