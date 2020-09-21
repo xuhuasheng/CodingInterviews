@@ -42,4 +42,33 @@ def longestSubstringWithoutDuplication(s:str):
 
 if __name__ == "__main__":
     print(longestSubstringWithoutDuplication("pwwkew"))
+
+
+# class Solution {
+# public:
+#     int lengthOfLongestSubstring(string s) {
+#         int n = s.size();
+#         if (n==0) return 0;
+#         int cnt = 0;
+#         int ans = 0;
+#         unordered_map<char, int> log;
+#         for (int i=0; i<s.size(); i++) {
+#             if (log.find(s[i]) == log.end()) {
+#                 cnt += 1;
+#                 log.insert(pair<char, int> (s[i], i));
+#                 //log.insert({s[i], i});
+#             } else {
+#                 int d = i - log[s[i]];
+#                 if (d > cnt)
+#                     cnt += 1;
+#                 else
+#                     cnt = d;
+#             }
+#             log[s[i]] = i;
+#             ans = max(ans, cnt);
+#         }
+#         return ans;
+
+#     }
+# };
     
